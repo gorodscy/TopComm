@@ -1,41 +1,33 @@
 <p id="notice"><%= notice %></p>
 
-<div id="ad-container">
-  <% @advertisements.each do |advertisement| %>
-    <%= image_tag advertisement.ImageUrl, class: "fit", style: "display:none" %>
-  <% end %>
-</div>
+<h1>Listing Advertisements</h1>
 
-<script>
-  var ads = $('#ad-container img');
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Imageurl</th>
+      <th>Displaytime</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
 
-  ads.each(function() {
-    $last = $(this);
-    $last.hide();
-  })
+  <tbody>
+    <% @advertisements.each do |advertisement| %>
+      <tr>
+        <td><%= advertisement.Title %></td>
+        <td><%= advertisement.Description %></td>
+        <td><%= advertisement.ImageUrl %></td>
+        <td><%= advertisement.DisplayTime %></td>
+        <td><%= link_to 'Show', advertisement %></td>
+        <td><%= link_to 'Edit', edit_advertisement_path(advertisement) %></td>
+        <td><%= link_to 'Destroy', advertisement, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
-  var timer = setInterval(function() {
-    var d = new Date();
-    var n = d.getTime();
-    $active = ads.eq(Math.round(n / 5000) % <%= @advertisements.size %>);
-    
-    $last.hide();
-    $active.show();
-    $last = $active;
-  }, 30);
+<br>
 
-  function set_body_height() { // set body height = window height
-    $('body').height($(window).height());
-  }
-  $(document).ready(function() {
-    $(window).bind('resize', set_body_height);
-    set_body_height();
-  });
-</script>
-
-<style>
-  .fit { /* set relative picture size */
-    height: 100%;
-    position: absolute;
-  }
-</style>
+<%= link_to 'New Advertisement', new_advertisement_path %>

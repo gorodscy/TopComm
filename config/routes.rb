@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :advertisements
   get 'watch', to: 'advertisements#watch', as: 'watch'
+  get 'manage', to: 'advertisements#index', as: 'manage'
 
   root 'advertisements#main'
 

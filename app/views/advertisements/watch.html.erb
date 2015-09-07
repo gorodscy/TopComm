@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<div id="ad-container">
+  <% @advertisements.each do |advertisement| %>
+    <%= image_tag advertisement.ImageUrl, class: "fit", style: "display:none" %>
+  <% end %>
+</div>
+
+<script>
+  var ads = $('#ad-container img');
+
+  ads.each(function() {
+    $last = $(this);
+    $last.hide();
+  })
+
+  var timer = setInterval(function() {
+    var d = new Date();
+    var n = d.getTime();
+    $active = ads.eq(Math.round(n / 5000) % <%= @advertisements.size %>);
+    
+    $last.hide();
+    $active.show();
+    $last = $active;
+  }, 30);
+
+  function set_body_height() { // set body height = window height
+    $('body').height($(window).height());
+  }
+  $(document).ready(function() {
+    $(window).bind('resize', set_body_height);
+    set_body_height();
+  });
+</script>
+
+<style>
+  .fit { /* set relative picture size */
+    height: 100%;
+    position: absolute;
+  }
+</style>
