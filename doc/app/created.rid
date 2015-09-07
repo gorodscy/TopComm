@@ -1,0 +1,7 @@
+Mon, 07 Sep 2015 15:44:14 -0300
+README.rdoc	Mon, 07 Sep 2015 12:49:00 -0300
+app/controllers/advertisings_controller.rb	Mon, 07 Sep 2015 13:30:31 -0300
+app/controllers/application_controller.rb	Mon, 07 Sep 2015 13:28:19 -0300
+app/helpers/advertisings_helper.rb	Mon, 07 Sep 2015 13:07:01 -0300
+app/helpers/application_helper.rb	Mon, 07 Sep 2015 12:49:00 -0300
+app/models/advertising.rb	Mon, 07 Sep 2015 13:07:01 -0300
