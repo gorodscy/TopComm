@@ -4,8 +4,10 @@ one:
   Title: MyString
   Description: MyString
   ImageUrl: MyString
+  DisplayTime: 1
 
 two:
   Title: MyString
   Description: MyString
   ImageUrl: MyString
+  DisplayTime: 1

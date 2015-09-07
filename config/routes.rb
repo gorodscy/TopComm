@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
-  resources :advertisings
+  resources :advertisements
+  get 'watch', to: 'advertisements#watch', as: 'watch'
 
-  root 'advertisings#watch'
+  root 'advertisements#main'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
 
 <div id="ad-container">
-  <% @advertisings.each do |advertising| %>
-    <%= image_tag advertising.ImageUrl, class: "fit", style: "display:none" %>
+  <% @advertisements.each do |advertisement| %>
+    <%= image_tag advertisement.ImageUrl, class: "fit", style: "display:none" %>
   <% end %>
 </div>
 
@@ -17,7 +17,7 @@
   var timer = setInterval(function() {
     var d = new Date();
     var n = d.getTime();
-    $active = ads.eq(Math.round(n / 5000) % <%= @advertisings.size %>);
+    $active = ads.eq(Math.round(n / 5000) % <%= @advertisements.size %>);
     
     $last.hide();
     $active.show();

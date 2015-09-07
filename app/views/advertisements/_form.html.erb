@@ -1,10 +1,10 @@
-<%= form_for(@advertising) do |f| %>
-  <% if @advertising.errors.any? %>
+<%= form_for(@advertisement) do |f| %>
+  <% if @advertisement.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@advertising.errors.count, "error") %> prohibited this advertising from being saved:</h2>
+      <h2><%= pluralize(@advertisement.errors.count, "error") %> prohibited this advertisement from being saved:</h2>
 
       <ul>
-      <% @advertising.errors.full_messages.each do |message| %>
+      <% @advertisement.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -22,6 +22,10 @@
   <div class="field">
     <%= f.label :ImageUrl %><br>
     <%= f.text_field :ImageUrl %>
+  </div>
+  <div class="field">
+    <%= f.label :DisplayTime %><br>
+    <%= f.number_field :DisplayTime %>
   </div>
   <div class="actions">
     <%= f.submit %>
