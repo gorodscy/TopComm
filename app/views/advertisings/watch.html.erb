@@ -8,16 +8,21 @@
 
 <script>
   var ads = $('#ad-container img');
-  var $active = ads.eq(0);
-  $active.show();
-  var $next = $active.next();
-  var timer = setInterval(function() {
-    $next.fadeIn();
-    $active.hide();
-    $active = $next;
-    $next = (ads.last().index() == ads.index($active)) ? $next = ads.eq(0) : $active.next();
 
-  }, 5000);
+  ads.each(function() {
+    $last = $(this);
+    $last.hide();
+  })
+
+  var timer = setInterval(function() {
+    var d = new Date();
+    var n = d.getTime();
+    $active = ads.eq(Math.round(n / 5000) % <%= @advertisings.size %>);
+    
+    $last.hide();
+    $active.show();
+    $last = $active;
+  }, 30);
 
   function set_body_height() { // set body height = window height
     $('body').height($(window).height());
