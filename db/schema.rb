@@ -13,19 +13,14 @@
 
 ActiveRecord::Schema.define(version: 20150907212846) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "advertisements", force: :cascade do |t|
     t.string   "Title"
     t.string   "Description"
     t.string   "ImageUrl"
     t.integer  "DisplayTime"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
-  create_table "advertisings", force: :cascade do |t|
-    t.string   "Title"
-    t.string   "Description"
-    t.string   "ImageUrl"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end

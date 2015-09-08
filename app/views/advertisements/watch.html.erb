@@ -2,7 +2,7 @@
 
 <div id="ad-container">
   <% @advertisements.each do |advertisement| %>
-    <%= image_tag advertisement.ImageUrl, class: "fit", style: "display:none" %>
+    <%= image_tag advertisement.ImageUrl, class: "fit", data: { time: advertisement.DisplayTime }, style: "display:none" %>
   <% end %>
 </div>
 
