@@ -20,5 +20,10 @@
   <%= @advertisement.DisplayTime %>
 </p>
 
+<p>
+  <strong>Is Video:</strong>
+  <%= @advertisement.isVideo %>
+</p>
+
 <%= link_to 'Edit', edit_advertisement_path(@advertisement) %> |
 <%= link_to 'Back', advertisements_path %>
