@@ -12,13 +12,12 @@
   <% end %>
 </div>
 
-<script type="text/javascript" charset="utf-8" src="js/jquery.tubular.1.0.js"></script> 
 <script>
   $().ready(function() {
     $('.embed-container').each(function() {
       $this = $(this);
       url = $this.data("url");
-      $('#ad-container')).tubular({videoId: url});
+      $this.tubular({videoId: url});
     })
   });
 
