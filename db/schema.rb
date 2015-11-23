@@ -11,19 +11,43 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151108204717) do
+ActiveRecord::Schema.define(version: 20151122230136) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "AdsLists_Advertisements", id: false, force: :cascade do |t|
+    t.integer "ads_list_id",      null: false
+    t.integer "advertisement_id", null: false
+  end
+
+  create_table "ads_lists", force: :cascade do |t|
+    t.integer  "total_profit"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "user_id"
+    t.string   "code"
+    t.text     "description"
+  end
+
   create_table "advertisements", force: :cascade do |t|
-    t.string   "Title"
-    t.string   "Description"
-    t.string   "ImageUrl"
-    t.integer  "DisplayTime"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
-    t.boolean  "isVideo",     default: false
+    t.string   "title"
+    t.string   "description"
+    t.string   "url"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "bid"
+    t.integer  "min_interval"
+    t.integer  "user_id"
+  end
+
+  add_index "advertisements", ["user_id"], name: "index_advertisements_on_user_id", using: :btree
+
+  create_table "users", force: :cascade do |t|
+    t.string   "username"
+    t.string   "password"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

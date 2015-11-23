@@ -1,0 +1,22 @@
+# == Schema Information
+#
+# Table name: ads_lists
+#
+#  id           :integer          not null, primary key
+#  total_profit :integer
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  user_id      :integer
+#  code         :string
+#  description  :text
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  UserId: 1
+  TotalProfit: 1
+
+two:
+  UserId: 1
+  TotalProfit: 1

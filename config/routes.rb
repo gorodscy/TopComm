@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
+  resources :ads_lists
+  resources :users
   resources :advertisements
   get 'watch', to: 'advertisements#watch', as: 'watch'
-  get 'manage', to: 'advertisements#index', as: 'manage'
+  get 'manage_ads', to: 'advertisements#index', as: 'manage_ads'
+  get 'manage_lists', to: 'ads_lists#index', as: 'manage_lists'
+  get 'login_page', to: 'users#login_page', as: 'login_page'
+  post 'login', to: 'users#login', as: 'login'
 
   root 'advertisements#main'
 

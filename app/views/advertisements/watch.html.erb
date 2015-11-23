@@ -3,21 +3,10 @@
 <div id="ad-container">
   <% @advertisements.each do |advertisement| %>
     <div class="fit" style="display:none;" data-time=<%= advertisement.DisplayTime.to_s %>>
-      <% if advertisement.isVideo %>
-        <div class="embed-container" data-url=<%= embed(advertisement.ImageUrl).to_s %>></div>
-      <% else %>
-        <%= image_tag advertisement.ImageUrl %>
-      <% end %>
+      <div class="embed-container" data-url=<%= embed(advertisement.ImageUrl).to_s %>></div>
     </div>
   <% end %>
 </div>
-
-<style>
-#tubular-container {
-  top: 0px !important;
-  left: 0px !important;
-}
-</style>
 
 <script>
   $().ready(function() {

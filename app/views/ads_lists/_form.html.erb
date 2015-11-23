@@ -1,0 +1,24 @@
+<%= form_for(@ads_list) do |f| %>
+  <% if @ads_list.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@ads_list.errors.count, "error") %> prohibited this ads_list from being saved:</h2>
+
+      <ul>
+      <% @ads_list.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.hidden :user_id, current_user.id %>
+  </div>
+  <div class="field">
+    <%= f.label :total_profit %><br>
+    <%= f.number_field :total_profit %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

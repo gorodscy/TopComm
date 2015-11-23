@@ -1,21 +1,19 @@
 # == Schema Information
 #
-# Table name: advertisements
+# Table name: ads_lists
 #
 #  id           :integer          not null, primary key
-#  title        :string
-#  description  :string
-#  url          :string
+#  total_profit :integer
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
-#  bid          :integer
-#  min_interval :integer
 #  user_id      :integer
+#  code         :string
+#  description  :text
 #
 
 require 'test_helper'
 
-class AdvertisementTest < ActiveSupport::TestCase
+class AdsListTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

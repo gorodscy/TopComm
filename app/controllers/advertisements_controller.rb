@@ -1,4 +1,5 @@
 class AdvertisementsController < ApplicationController
+  include ApplicationHelper
   before_action :set_advertisement, only: [:show, :edit, :update, :destroy]
 
   # GET /advertisements
@@ -76,6 +77,6 @@ class AdvertisementsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def advertisement_params
-      params.require(:advertisement).permit(:Title, :Description, :ImageUrl, :DisplayTime, :isVideo)
+      params.require(:advertisement).permit(:title, :description, :url)
     end
 end
