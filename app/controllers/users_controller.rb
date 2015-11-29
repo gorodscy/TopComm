@@ -41,7 +41,13 @@ class UsersController < ApplicationController
       flash[:error] = "Log in failed"
       redirect_to login_page_path
     end
+  end
 
+  def logout
+    logout_user
+
+    flash[:success] = "User logged out"
+    redirect_to root_path
   end
 
   # PATCH/PUT /users/1

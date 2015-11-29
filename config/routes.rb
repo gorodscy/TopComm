@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'manage_lists', to: 'ads_lists#index', as: 'manage_lists'
   get 'login_page', to: 'users#login_page', as: 'login_page'
   post 'login', to: 'users#login', as: 'login'
+  get 'logout', to: 'users#logout', as: 'logout'
 
   root 'advertisements#main'
 

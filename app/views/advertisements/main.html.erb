@@ -1,9 +1,10 @@
-<h1>Welcome <%= current_user.username %></h1>
+<h1>Welcome <%= current_user ? current_user.username : "Guest" %></h1>
 
 <div class="well">
   <%= link_to 'Watch', watch_path %>
   <%= link_to 'Manage Ads', manage_ads_path %>
   <%= link_to 'Manage Lists', manage_lists_path %>
-  <%= link_to 'Sign Up', new_user_path %>
-  <%= link_to 'Login', login_page_path %>
+  <%= link_to 'Sign up', new_user_path %>
+  <%= link_to 'Log in', login_page_path %>
+  <%= link_to 'Log out', logout_path %>
 </div>
