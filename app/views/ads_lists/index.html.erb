@@ -5,8 +5,8 @@
 <table>
   <thead>
     <tr>
-      <th>User</th>
       <th>Totalprofit</th>
+      <th>Code</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -14,8 +14,8 @@
   <tbody>
     <% @ads_lists.each do |ads_list| %>
       <tr>
-        <td><%= User.where(id: ads_list.user_id).first %></td>
         <td><%= ads_list.total_profit %></td>
+        <td><%= ads_list.code %></td>
         <td><%= link_to 'Show', ads_list %></td>
         <td><%= link_to 'Edit', edit_ads_list_path(ads_list) %></td>
         <td><%= link_to 'Destroy', ads_list, method: :delete, data: { confirm: 'Are you sure?' } %></td>

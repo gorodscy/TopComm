@@ -11,15 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151122230136) do
+ActiveRecord::Schema.define(version: 20151129155818) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "AdsLists_Advertisements", id: false, force: :cascade do |t|
-    t.integer "ads_list_id",      null: false
-    t.integer "advertisement_id", null: false
-  end
 
   create_table "ads_lists", force: :cascade do |t|
     t.integer  "total_profit"
@@ -28,6 +23,11 @@ ActiveRecord::Schema.define(version: 20151122230136) do
     t.integer  "user_id"
     t.string   "code"
     t.text     "description"
+  end
+
+  create_table "ads_lists_advertisements", id: false, force: :cascade do |t|
+    t.integer "ads_list_id",      null: false
+    t.integer "advertisement_id", null: false
   end
 
   create_table "advertisements", force: :cascade do |t|

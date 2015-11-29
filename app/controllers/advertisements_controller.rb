@@ -1,5 +1,6 @@
 class AdvertisementsController < ApplicationController
   include ApplicationHelper
+  include AdvertisementsHelper
   before_action :set_advertisement, only: [:show, :edit, :update, :destroy]
 
   # GET /advertisements
@@ -7,9 +8,13 @@ class AdvertisementsController < ApplicationController
   def index
     @advertisements = Advertisement.all
   end
+  
+  def watch_list
+  end
 
   def watch
-    @advertisements = Advertisement.all
+    @advertisements = AdsList.find_by(code: params[:code]).advertisements
+    @videoIDs = @advertisements.map { |a| embed(a.url) }
   end
 
   def main

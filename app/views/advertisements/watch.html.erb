@@ -1,51 +1,55 @@
 <p id="notice"><%= notice %></p>
 
-<div id="ad-container">
-  <% @advertisements.each do |advertisement| %>
-    <div class="fit" style="display:none;" data-time=<%= advertisement.DisplayTime.to_s %>>
-      <div class="embed-container" data-url=<%= embed(advertisement.ImageUrl).to_s %>></div>
-    </div>
-  <% end %>
+<div id="ad-container" style="margin:0px !important;position:absolute;left:0px;top:0px;">
+	<div id="player"></div>
 </div>
 
 <script>
-  $().ready(function() {
-    $('.embed-container').each(function() {
-      $this = $(this);
-      url = $this.data("url");
-      $this.tubular({videoId: url});
-    })
-  });
+	var videoIDs = <%= raw @videoIDs.to_json %>;
 
-var ads = $('#ad-container div');
+	// 2. This code loads the IFrame Player API code asynchronously.
+	var tag = document.createElement('script');
 
-ads.each(function() {
-  $last = $(this);
-  $last.hide();
-})
+	tag.src = "http://www.youtube.com/iframe_api";
 
-var timer = setInterval(function() {
-  var d = new Date();
-  var n = d.getTime();
-  $active = ads.eq(Math.round(n / 5000) % <%= @advertisements.size %>);
+	var firstScriptTag = document.getElementsByTagName('script')[0];
+	firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-  $last.hide();
-  $active.show();
-  $last = $active;
-}, 30);
+	// 3. This function creates an <iframe> (and YouTube player)
+	//    after the API code downloads.
+	var player, currentVideoId = 0;
 
-  function set_body_height() { // set body height = window height
-    $('body').height($(window).height());
-  }
-  $(document).ready(function() {
-    $(window).bind('resize', set_body_height);
-    set_body_height();
-  });
-  </script>
+	function onYouTubeIframeAPIReady() {
+		player = new YT.Player('player', {
+			height: $(window).height(),
+			width: $(window).width(),
+			playerVars: { 'autoplay': 1, 'controls': 0, 'iv_load_policy': 3, 'rel': 0, 'showinfo': 0 },
+			events: {
+				'onReady': onPlayerReady,
+				'onStateChange': onPlayerStateChange
+			}
+		});
+	}
 
-  <style>
-  .fit { /* set relative picture size */
-    height: 100%;
-    position: absolute;
-  }
-  </style>
+	// 4. The API will call this function when the video player is ready.
+	function onPlayerReady(event) {
+		event.target.loadVideoById(videoIDs[currentVideoId]);
+	}
+
+	// 5. The API calls this function when the player's state changes.
+	var done = false;
+	function onPlayerStateChange(event) {
+		if (event.data == YT.PlayerState.ENDED) {
+            currentVideoId = (currentVideoId + 1) % videoIDs.length;
+
+            player.loadVideoById(videoIDs[currentVideoId]);
+        }
+	}
+</script>
+
+<style>
+.fit { /* set relative picture size */
+	height: 100%;
+	position: absolute;
+}
+</style>

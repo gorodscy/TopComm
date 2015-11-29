@@ -1,0 +1,5 @@
+<%= form_tag("/watch", method: "get") do %>
+  <%= label_tag(:code, "Code for list to watch:") %>
+  <%= text_field_tag(:code) %>
+  <%= submit_tag("Watch") %>
+<% end %>

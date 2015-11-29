@@ -15,5 +15,5 @@
 
 class Advertisement < ActiveRecord::Base
 	has_and_belongs_to_many :ads_lists
-	belongs_to :User
+	belongs_to :user
 end

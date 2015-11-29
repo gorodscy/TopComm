@@ -15,10 +15,12 @@ class AdsListsController < ApplicationController
   # GET /ads_lists/new
   def new
     @ads_list = AdsList.new
+    @ads = Advertisement.all
   end
 
   # GET /ads_lists/1/edit
   def edit
+    @ads = Advertisement.all
   end
 
   # POST /ads_lists
@@ -69,6 +71,6 @@ class AdsListsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def ads_list_params
-      params.require(:ads_list).permit(:UserId, :total_profit)
+      params.require(:ads_list).permit(:user_id, advertisement_ids: [])
     end
 end
