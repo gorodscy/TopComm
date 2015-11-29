@@ -15,11 +15,7 @@
     <%= f.hidden_field :user_id, value: current_user.id %>
   </div>
   <div class="field">
-    <%= f.label :total_profit %><br>
-    <%= f.number_field :total_profit %>
-  </div>
-  <div class="field">
-    <%= f.label "Select the ads you want to show" %>
+    <%= f.label "Select the ads you want to show:" %></br>
     <%= f.collection_select :advertisement_ids, @ads, :id, :title, {}, 
     {:multiple => true} %>
   </div>

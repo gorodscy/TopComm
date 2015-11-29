@@ -6,7 +6,7 @@ class AdvertisementsController < ApplicationController
   # GET /advertisements
   # GET /advertisements.json
   def index
-    @advertisements = Advertisement.all
+    @advertisements = Advertisement.where(user_id: current_user.id)
   end
   
   def watch_list
@@ -38,6 +38,7 @@ class AdvertisementsController < ApplicationController
   # POST /advertisements.json
   def create
     @advertisement = Advertisement.new(advertisement_params)
+    @advertisement.user_id = current_user.id
 
     respond_to do |format|
       if @advertisement.save
@@ -82,6 +83,6 @@ class AdvertisementsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def advertisement_params
-      params.require(:advertisement).permit(:title, :description, :url)
+      params.require(:advertisement).permit(:title, :description, :url, :bid)
     end
 end

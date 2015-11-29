@@ -1,10 +1,11 @@
 class AdsListsController < ApplicationController
+  include ApplicationHelper
   before_action :set_ads_list, only: [:show, :edit, :update, :destroy]
 
   # GET /ads_lists
   # GET /ads_lists.json
   def index
-    @ads_lists = AdsList.all
+    @ads_lists = AdsList.where(user_id: current_user.id)
   end
 
   # GET /ads_lists/1
