@@ -10,24 +10,26 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
+<section id="content">
+  <div class="form-group">
+    <%= f.label :title,"Título"%><br>
+    <%= f.text_field :title , class:"form-control", placeholder:"Título" %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :description %><br>
-    <%= f.text_field :description %>
+    <%= f.text_area :description, class:"form-control", placeholder:"Descrição", rows:"3" %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :bid %><br>
-    <%= f.number_field :bid %>
+    <%= f.number_field :bid , class:"form-control", placeholder:"Bid"%>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :url %><br>
-    <%= f.text_field :url %>
+    <%= f.text_field :url , class:"form-control", placeholder:"http://"%>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Enviar", class:"btn btn-lg btn-primary btn-block" %>
   </div>
+</section>
+<br>
 <% end %>

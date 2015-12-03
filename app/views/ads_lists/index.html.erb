@@ -1,29 +1,37 @@
+
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Ads Lists</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Totalprofit</th>
-      <th>Code</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @ads_lists.each do |ads_list| %>
-      <tr>
-        <td><%= ads_list.total_profit %></td>
-        <td><%= ads_list.code %></td>
-        <td><%= link_to 'Show', ads_list %></td>
-        <td><%= link_to 'Edit', edit_ads_list_path(ads_list) %></td>
-        <td><%= link_to 'Destroy', ads_list, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
-<br>
 
-<%= link_to 'New Ads list', new_ads_list_path %>
+<section id="content">
+
+  <h2 class="sub-header">Lista de Canais <%= link_to '+', new_ads_list_path %></h2>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th width="2%">#</th>
+          <th width="20%">Lucro (R$)</th>
+          <th width="58%">Codigo</th>
+          <th width="20%" colspan="3"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @ads_lists.each do |ads_list| %>
+          <tr>
+            <td><%= ads_list.id %></td>
+            <td><%= ads_list.total_profit %></td>
+            <td><%= ads_list.code %></td>
+            <td><%= link_to 'Visualizar', ads_list %></td>
+            <td><%= link_to 'Editar', edit_ads_list_path(ads_list) %></td>
+            <td><%= link_to 'Apagar', ads_list, method: :delete, data: { confirm: 'Tem certeza?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</section>
+</div>
+</section>

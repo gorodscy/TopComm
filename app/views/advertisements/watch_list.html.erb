@@ -1,5 +1,9 @@
 <%= form_tag("/watch", method: "get") do %>
-  <%= label_tag(:code, "Code for list to watch:") %>
-  <%= text_field_tag(:code) %>
-  <%= submit_tag("Watch") %>
+  <%= label_tag(:code, "Código para o Canal") %>
+  <div class="input-group">
+    <%= text_field_tag(:code, "", class:"form-control") %>
+    <span class="input-group-btn">
+    <%= submit_tag("Assistir", class:"btn btn-default") %>
+  </span>
+</div>
 <% end %>

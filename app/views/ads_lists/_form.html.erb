@@ -11,15 +11,23 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.hidden_field :user_id, value: current_user.id %>
   </div>
-  <div class="field">
-    <%= f.label "Select the ads you want to show:" %></br>
-    <%= f.collection_select :advertisement_ids, @ads, :id, :title, {}, 
-    {:multiple => true} %>
+  <div class="form-group">
+    <%= f.label "Selecione as propagandas que você deseja exibir:" %></br>
+    <%= f.collection_select :advertisement_ids, @ads, :id, :title, {:class => "form-control"},
+    {:multiple => "multiple", :class => "form-control", :data => {:placeholder => 'Selecione uma ou mais propagandas.' }} %>
   </div>
+  <br>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Enviar", class:"btn btn-lg btn-primary btn-block" %>
   </div>
+  <br>
 <% end %>
+<!-- Initialize the plugin: -->
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#ads_list_advertisement_ids").chosen({no_results_text: "Ops, nada encontrado!"});
+    });
+</script>

@@ -7,9 +7,58 @@
 	<%= csrf_meta_tags %>
 </head>
 <body>
-	<% flash.each do |message_type, message| %>
-		<div class="alert alert-<%= message_type %>"><%= message %></div>
-	<% end %>
-	<%= yield %>
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">Ads-on</a>
+			</div>
+			<div id="navbar" class="navbar-collapse collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<% if user_logged_in? %>
+						<li><%= link_to 'Log out', logout_path %></li>
+					<% else %>
+						<li><%= link_to 'Sign up', new_user_path %></li>
+						<li><%= link_to 'Log in', login_page_path %></li>
+					<% end %>
+          <%= yield(:top_menu)%>
+
+          </ul>
+			</div>
+		</div>
+	</nav>
+
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-3 col-md-2 sidebar">
+				<ul class="nav nav-sidebar">
+					<li class="active"><%= link_to 'Home', root_path%></li>
+					<li ><%= link_to 'Visualizar', watch_list_path %></li>
+					<% if user_logged_in? %>
+						<% content_for :left_menu do %>
+							<li><%= link_to 'Propagandas', manage_ads_path %></li>
+							<li><%= link_to 'Canais', manage_lists_path %></li>
+						<% end %>
+					<% end %>
+					<%= yield(:left_menu)%>
+				</ul>
+			</div>
+			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+				<% flash.each do |message_type, message| %>
+					<div class="alert alert-<%= message_type %>"><%= message %></div>
+				<% end %>
+				<%= yield %>
+			</div>
+		</div>
+	</div>
+
+
+
+
 </body>
 </html>

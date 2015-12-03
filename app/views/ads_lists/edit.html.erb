@@ -1,6 +1,8 @@
-<h1>Editing Ads List</h1>
+<h1>Editar Canal</h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @ads_list %> |
-<%= link_to 'Back', ads_lists_path %>
+<div class="btn-group" role="group" aria-label="...">
+<%= link_to 'Show', @ads_list, class:"btn btn-default" %>
+<%= link_to 'Back', ads_lists_path, class:"btn btn-default" %>
+</div>

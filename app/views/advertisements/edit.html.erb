@@ -1,6 +1,8 @@
 <h1>Editing Advertisement</h1>
 
 <%= render 'form' %>
+<div class="btn-group" role="group" aria-label="...">
+<%= link_to 'Visulizar', @advertisement, class:"btn btn-default" %>
+<%= link_to 'Voltar'.html_safe, advertisements_path , class:"btn btn-default" %>
 
-<%= link_to 'Show', @advertisement %> |
-<%= link_to 'Back', advertisements_path %>
+</div>

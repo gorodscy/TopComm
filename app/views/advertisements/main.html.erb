@@ -1,13 +1,1 @@
-<h1>Welcome <%= current_user ? current_user.username : "Guest" %></h1>
-
-<div class="well">
-	<%= link_to 'Watch', watch_list_path %>
-	<% if user_logged_in? %>
-		<%= link_to 'Manage Ads', manage_ads_path %>
-		<%= link_to 'Manage Lists', manage_lists_path %>
-		<%= link_to 'Log out', logout_path %>
-	<% else %>
-		<%= link_to 'Sign up', new_user_path %>
-		<%= link_to 'Log in', login_page_path %>
-	<% end %>
-</div>
+<h1 class="page-header"><%= current_user ? "Bem Vindo "+current_user.username : "Bem vindo ao Ads-on." %></h1>

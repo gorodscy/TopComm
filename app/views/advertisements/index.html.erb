@@ -1,31 +1,38 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Advertisements</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Url</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @advertisements.each do |advertisement| %>
-      <tr>
-        <td><%= advertisement.title %></td>
-        <td><%= advertisement.description %></td>
-        <td><%= advertisement.url %></td>
-        <td><%= link_to 'Show', advertisement %></td>
-        <td><%= link_to 'Edit', edit_advertisement_path(advertisement) %></td>
-        <td><%= link_to 'Destroy', advertisement, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
-<br>
 
-<%= link_to 'New Advertisement', new_advertisement_path %>
+<section id="content">
+
+  <h2 class="sub-header">Lista de Propagandas <%= link_to '+', new_advertisement_path %></h2>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th width="2%">#</th>
+          <th width="18%">Title</th>
+          <th width="35%">Description</th>
+          <th width="25%">Url</th>
+          <th width="20%"colspan="3"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @advertisements.each do |advertisement| %>
+          <tr>
+            <td><%= advertisement.id %></td>
+            <td><%= advertisement.title %></td>
+            <td><%= advertisement.description %></td>
+            <td><%= advertisement.url %></td>
+            <td><%= link_to 'Visuallizar', advertisement %></td>
+            <td><%= link_to 'Editar', edit_advertisement_path(advertisement) %></td>
+            <td><%= link_to 'Apagar', advertisement, method: :delete, data: { confirm: 'Tem certeza?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</section>
+</div>
+</section>

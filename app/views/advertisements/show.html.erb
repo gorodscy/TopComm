@@ -14,6 +14,7 @@
   <strong>Url:</strong>
   <%= @advertisement.url %>
 </p>
-
-<%= link_to 'Edit', edit_advertisement_path(@advertisement) %> |
-<%= link_to 'Back', advertisements_path %>
+<div class="btn-group" role="group" aria-label="...">
+<%= link_to 'Editar', edit_advertisement_path(@advertisement), class:"btn btn-default" %>
+<%= link_to 'Voltar', advertisements_path, class:"btn btn-default" %>
+</div>
