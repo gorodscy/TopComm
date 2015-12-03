@@ -15,6 +15,8 @@ class AdvertisementsController < ApplicationController
   def watch
     @advertisements = AdsList.find_by(code: params[:code]).advertisements
     @videoIDs = @advertisements.map { |a| embed(a.url) }
+
+    render :layout => 'watch'
   end
 
   def main
