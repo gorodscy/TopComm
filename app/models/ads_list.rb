@@ -15,8 +15,7 @@ class AdsList < ActiveRecord::Base
 	belongs_to :user
 	has_and_belongs_to_many :advertisements
 
-	after_initialize :generate_code
-	before_save :calculate_profit
+	before_save :calculate_profit, :generate_code
 
 
 	def generate_code
