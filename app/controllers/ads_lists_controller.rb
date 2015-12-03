@@ -32,10 +32,8 @@ class AdsListsController < ApplicationController
     respond_to do |format|
       if @ads_list.save
         format.html { redirect_to @ads_list, notice: 'Ads list was successfully created.' }
-        format.json { render :show, status: :created, location: @ads_list }
       else
         format.html { render :new }
-        format.json { render json: @ads_list.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -46,10 +44,8 @@ class AdsListsController < ApplicationController
     respond_to do |format|
       if @ads_list.update(ads_list_params)
         format.html { redirect_to @ads_list, notice: 'Ads list was successfully updated.' }
-        format.json { render :show, status: :ok, location: @ads_list }
       else
         format.html { render :edit }
-        format.json { render json: @ads_list.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -60,7 +56,6 @@ class AdsListsController < ApplicationController
     @ads_list.destroy
     respond_to do |format|
       format.html { redirect_to ads_lists_url, notice: 'Ads list was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 
